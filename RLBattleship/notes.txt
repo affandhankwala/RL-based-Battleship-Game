@@ -1,0 +1,64 @@
+# RLBattleship
+
+Work breakdown:
+
+Environment
+
+SARSA model
+
+Q-Learning model (MC first visit?)
+
+Random Model
+
+Write the technical paper
+
+RL Battleship
+
+0 0 0 0 0
+
+0 h 0 0 0
+
+0 0 m m 0
+
+0 0 0 h 0
+
+0 0 0 0 0 
+
+-___-
+
+'000000h00000mm0000h000000':
+
+'...': 3.1
+
+
+Environment: 
+
+self.ship_state -> state space with ship positions (stored within env)
+
+'ss0000' -> 'ssm000' -> 'hsm000' -> 'hhm000' no s = finish
+
+Track both states in parallel
+
+self.game_state -> state space without ship positions (given to agent)
+
+
+read_state(state: str) -> list // Pass in the state name. Return state space list
+
+
+mark(marked_index: int) -> str, bool, float // Pass in index that you want to fire at. Return next state and Boolean indicating game finish and reward as float/int
+
+
+game_end(state: str) -> bool // Determine if the ship is sunk
+
+
+game_start(optional coordinate) -> str // Set up the state and place random ship on random spot on board and return state. 
+
+
+place_ship() -> str // Select a random string 'ssss' and return the state str. Select 1 random position and then place ship randomly in valid orientation
+
+
+get_terminal_flag (helper method) 'ssss' == 'hhhh' -> terminal. 's0000s' == 'h0000h'
+
+
+get_reward: hit = 10, sink = 100, miss = -1
+
